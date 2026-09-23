@@ -9,7 +9,7 @@ export default function Placeholder({ className = "" }) {
         </div>
         <span className="text-xs uppercase tracking-[.18em]"> фото</span>
         <p className="mt-1 text-[11px] normal-case tracking-normal">
-         КАРТИНКИИ
+         КАРТИНКИ
         </p>
       </div>
     </div>
