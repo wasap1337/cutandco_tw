@@ -19,7 +19,7 @@ export default function Contacts({ contacts, onBooking }) {
         <div className="rounded-3xl border border-black/10 bg-[#eeece6] p-7">
           <h3 className="text-xl font-medium">Записаться</h3>
           <p className="mt-2 text-sm text-[#777269]">
-            ТГ ИЛИ БЕК ПОДКЛЮЧИТЬ
+            Оставьте заявку — перезвоним, чтобы подтвердить время визита.
           </p>
           <button onClick={onBooking} className="mt-7 rounded-full bg-[#201f1d] px-6 py-3 text-sm text-white">
             Открыть форму

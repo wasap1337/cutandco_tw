@@ -23,3 +23,11 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
+# Python / backend
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+firebase-key.json
+

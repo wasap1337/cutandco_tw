@@ -8,7 +8,7 @@ export default function Services({ services }) {
             <h2 className="mt-3 text-4xl font-semibold tracking-[-.03em]">Без лишнего.</h2>
           </div>
           <p className="hidden max-w-sm text-sm leading-6 text-[#625e57] sm:block">
-            ЗАМЕНИТЬ
+            Честные цены без сюрпризов: стоимость известна до начала работы.
           </p>
         </div>
 

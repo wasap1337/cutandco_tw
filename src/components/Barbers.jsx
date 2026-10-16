@@ -9,12 +9,16 @@ export default function Barbers({ barbers, onBooking }) {
 
       <div className="mt-10 grid gap-5 sm:grid-cols-2 md:grid-cols-3">
         {barbers.map((barber, index) => (
-          <div key={index}>
+          <div key={barber.id ?? index}>
             <Placeholder className="aspect-[4/5] rounded-2xl" />
             <div className="flex items-center justify-between pt-4">
               <div>
-                <h3 className="font-medium">{barber.name}</h3>
-                <p className="mt-1 text-sm text-[#777269]">{barber.experience}</p>
+                <h3 className="font-medium">{barber.full_name ?? barber.name}</h3>
+                <p className="mt-1 text-sm text-[#777269]">
+                  {typeof barber.experience === "number"
+                    ? `Барбер · ${barber.experience} лет опыта`
+                    : barber.experience}
+                </p>
               </div>
               <button onClick={onBooking} className="rounded-full border border-black/15 p-2" aria-label="Записаться">
                 <ArrowUpRight size={17} />

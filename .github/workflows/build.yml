@@ -1,0 +1,60 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Скачать код
+        uses: actions/checkout@v4
+
+      - name: Установить Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Установить зависимости
+        run: pip install -r backend/requirements.txt
+
+      - name: Запустить тесты
+        run: python -m pytest backend -v
+
+  build:
+    needs: test
+    if: ${{ needs.test.result == 'success' && github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Скачать код
+        uses: actions/checkout@v4
+
+      - name: Войти в GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Собрать и опубликовать образ backend
+        uses: docker/build-push-action@v5
+        with:
+          context: ./backend
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/cutandco-backend:latest
+            ghcr.io/${{ github.repository_owner }}/cutandco-backend:${{ github.sha }}
+
+      - name: Собрать и опубликовать образ frontend
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/cutandco-frontend:latest
+            ghcr.io/${{ github.repository_owner }}/cutandco-frontend:${{ github.sha }}

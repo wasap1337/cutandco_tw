@@ -1,0 +1,15 @@
+services:
+  backend:
+    build: ./backend
+    container_name: cutandco-backend
+    env_file: ./backend/.env
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build: .
+    container_name: cutandco-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
