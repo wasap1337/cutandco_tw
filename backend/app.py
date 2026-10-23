@@ -10,6 +10,13 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
+
+@app.after_request
+def robots_tag(response):
+    if request.path.startswith("/api/"):
+        response.headers["X-Robots-Tag"] = "noindex, nofollow"
+    return response
+
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 

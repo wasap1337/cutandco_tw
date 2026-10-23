@@ -1,3 +1,8 @@
+import os
+
+os.environ["SUPABASE_URL"] = ""
+os.environ["SUPABASE_KEY"] = ""
+
 import pytest
 
 from app import SERVICES, app

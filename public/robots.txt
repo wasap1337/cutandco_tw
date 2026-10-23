@@ -1,0 +1,12 @@
+# CUT & CO — правила сканирования
+# SPA: публичных маршрутов нет, кроме главной страницы.
+# API закрыт от сканирования (индексация ответов запрещена заголовком X-Robots-Tag).
+
+User-agent: *
+Disallow: /api/
+
+User-agent: Yandex
+Disallow: /api/
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content
+
+Sitemap: https://example.com/sitemap.xml
