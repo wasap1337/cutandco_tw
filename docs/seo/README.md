@@ -36,10 +36,10 @@
 
 ## Замеры Lighthouse (категория SEO, Desktop, прод-сборка)
 
-| Этап | Оценка | Отчёт |
-|------|--------|-------|
-| До   | 73/100 | `before.report.html` / `.json` |
-| После | см. `after.report.json` | `after.report.html` / `.json` |
+| Этап | Оценка | 
+|------|--------|
+| До   | 73/100 | 
+| После| 100/100| 
 
 Проваленные проверки «до»: отсутствовали `<title>`, meta description, валидный robots.txt.
 Запуск замера: `npm run build && npm run preview`, затем Lighthouse по `http://localhost:4173`
